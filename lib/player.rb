@@ -4,5 +4,6 @@ class Player
     options = args.fetch(:options, %w[yes no])
     puts message
     options.each { |option| puts option }
+    gets
   end
 end
