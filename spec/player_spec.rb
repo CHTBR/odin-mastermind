@@ -33,5 +33,13 @@ RSpec.describe Player do
         expect { subject.input({ options: %w[left right up down] }) }.to output(/down/).to_stdout
       end
     end
+
+    context "when only testing input" do
+      it "returns chosen option" do
+        options = %w[left right up down]
+        allow_any_instance_of(Object).to receive(:gets).and_return("up")
+        expect(subject.input({ options: options })).to eql("up")
+      end
+    end
   end
 end
