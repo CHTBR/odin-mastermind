@@ -19,5 +19,12 @@ RSpec.describe Player do
         expect { subject.input({ message: message }) }.to_not output(default_message).to_stdout
       end
     end
+
+    context "does it print out every given input option" do
+      it "prints a default set of input options" do
+        expect { subject.input({}) }.to output(/yes/).to_stdout
+        expect { subject.input({}) }.to output(/no/).to_stdout
+      end
+    end
   end
 end
