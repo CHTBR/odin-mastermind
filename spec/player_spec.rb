@@ -3,7 +3,7 @@ require "rspec"
 
 RSpec.describe Player do
   describe "#input" do
-    context "does it send a message to the player describing what it wants" do
+    context "when only testing message" do
       default_message = /Choose one of the options:/
       message = "Choose yes or no:"
 
@@ -20,7 +20,7 @@ RSpec.describe Player do
       end
     end
 
-    context "does it print out every given input option" do
+    context "when only testing input options" do
       it "prints a default set of input options" do
         expect { subject.input({}) }.to output(/yes/).to_stdout
         expect { subject.input({}) }.to output(/no/).to_stdout
