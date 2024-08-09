@@ -25,6 +25,13 @@ RSpec.describe Player do
         expect { subject.input({}) }.to output(/yes/).to_stdout
         expect { subject.input({}) }.to output(/no/).to_stdout
       end
+
+      it "prints every given input option" do
+        expect { subject.input({ options: %w[left right up down] }) }.to output(/left/).to_stdout
+        expect { subject.input({ options: %w[left right up down] }) }.to output(/right/).to_stdout
+        expect { subject.input({ options: %w[left right up down] }) }.to output(/up/).to_stdout
+        expect { subject.input({ options: %w[left right up down] }) }.to output(/down/).to_stdout
+      end
     end
   end
 end
