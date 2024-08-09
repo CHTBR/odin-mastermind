@@ -8,6 +8,11 @@ RSpec.describe Player do
         default_message = /Choose one of the options:/
         expect { subject.input }.to output(default_message).to_stdout
       end
+
+      it "prints out only message given as argument" do
+        message = "Choose yes or no:"
+        expect { subject.input({ message: message }) }.to output(Regexp.new(message)).to_stdout
+      end
     end
   end
 end
