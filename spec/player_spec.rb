@@ -22,6 +22,12 @@ RSpec.describe Player do
         allow_any_instance_of(Object).to receive(:gets).and_return("4")
         expect(subject.input({ options: options })).to eql(4)
       end
+
+      it "works with symbols" do
+        options = %i[one two three four]
+        allow_any_instance_of(Object).to receive(:gets).and_return("three")
+        expect(subject.input({ options: options })).to eql(:three)
+      end
     end
   end
 end
