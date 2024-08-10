@@ -18,7 +18,8 @@ class Player
   def _start_input_loop(options)
     loop do
       input = gets.chomp
-      return input if options.include?(input)
+      selected_option = options.select { |option| option.to_s == input }.first
+      return selected_option if selected_option
     end
   end
 end
