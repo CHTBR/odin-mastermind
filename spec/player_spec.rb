@@ -43,7 +43,7 @@ RSpec.describe Player do
 
       it "prompts you again in case of incorrect input" do
         options = %w[left right up down]
-        allow_any_instance_of(Object).to recieve(:gets).and_return("bogus input", "left")
+        allow_any_instance_of(Object).to receive(:gets).and_return("bogus input", "left")
         expect(subject.input({ options: options })).to eql("left")
       end
     end
