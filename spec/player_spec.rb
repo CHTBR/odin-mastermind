@@ -16,5 +16,12 @@ RSpec.describe Player do
         expect(subject.input({ options: options })).to eql("left")
       end
     end
+    context "when using different types of options" do
+      it "works with numerical options" do
+        options = [1, 2, 3, 4]
+        allow_any_instance_of(Object).to receive(:gets).and_return("4")
+        expect(subject.input({ options: options })).to eql(4)
+      end
+    end
   end
 end
