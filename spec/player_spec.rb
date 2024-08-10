@@ -1,7 +1,12 @@
-require_relative "../lib/player"
 require "rspec"
+require_relative "../lib/player"
+require_relative "input_manager_spec"
 
 RSpec.describe Player do
+  it_behaves_like "an input manager" do
+    let(:subject) { Player.new }
+  end
+
   describe "#input" do
     context "when only testing input" do
       it "returns chosen option" do
