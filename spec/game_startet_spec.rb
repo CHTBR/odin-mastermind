@@ -23,6 +23,12 @@ RSpec.describe InputManagerDouble do
   it_behaves_like "an input manager" do
     let(:subject) { InputManagerDouble.new }
   end
+
+  describe "#input" do
+    it "returns string 'input'" do
+      expect(subject.input).to eql("input")
+    end
+  end
 end
 
 RSpec.describe GameStarter do
