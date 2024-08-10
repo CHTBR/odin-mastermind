@@ -8,6 +8,11 @@ class ModeDouble
   end
 end
 
+class InputManagerDouble
+  def input
+  end
+end
+
 RSpec.describe ModeDouble do
   it_behaves_like "a startable" do
     let(:subject) { ModeDouble.new }
