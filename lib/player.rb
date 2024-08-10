@@ -4,6 +4,9 @@ class Player
     options = args.fetch(:options, %w[yes no])
     puts message
     options.each { |option| puts option }
-    gets
+    loop do
+      input = gets.chomp
+      return input if options.include?(input)
+    end
   end
 end
