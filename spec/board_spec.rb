@@ -12,12 +12,12 @@ RSpec.describe Board do
   end
 
   describe "#set_column" do
-    xit "sets the 1st column to the given sequence" do
+    it "sets the 1st column to the given sequence" do
       subject.set_column({ number: 1, sequence: %i[b g y y] })
       expect(subject.guesses[0]).to eql(%i[b g y y])
     end
 
-    xit "sets the 12th column to the given sequence" do
+    it "sets the 12th column to the given sequence" do
       subject.set_column({ number: 12, sequence: %i[g r g y] })
       expect(subject.guesses[11]).to eql(%i[g r g y])
     end
