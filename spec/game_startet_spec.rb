@@ -5,7 +5,7 @@ require_relative "startable_spec"
 
 RSpec.describe GameStarter do
   before(:example) do
-    @input_manager_double = instance_double("Player", :input)
+    @input_manager_double = instance_double("Player")
     @startable_double1 = double("Startable Double 1")
     allow(@startable_double1).to receive(:start)
     @startable_double2 = double("Startable Double 2")
@@ -17,6 +17,12 @@ RSpec.describe GameStarter do
   describe "#start_game" do
     it "responds to #start_game" do
       expect(@game_starter).to respond_to(:start_game)
+    end
+
+    xit "calls the input method of input_manager with message and options arguments" do
+      expect(@input_manager_double).to receive(:input).with({ message: "Select game mode:",
+                                                              options: [@startable_double1, @startable_double2] })
+      @game_starter.start_game
     end
 
     xit "calls the start method of startable_double1 when given by input_manager" do
