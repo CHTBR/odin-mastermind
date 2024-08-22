@@ -17,19 +17,19 @@ RSpec.describe GuessEvaluator do
         subject.target = %i[red green blue red]
       end
 
-      xit "compares an identical sequence against it" do
+      it "compares an identical sequence against it" do
         expect(subject.evaluate_guess(%i[red green blue red])).to eql({ color_and_spot: 4, color: 0 })
       end
 
-      xit "compares a scrambled sequence with the same colors in different places against it" do
+      it "compares a scrambled sequence with the same colors in different places against it" do
         expect(subject.evaluate_guess(%i[green red red blue])).to eql({ color_and_spot: 0, color: 4 })
       end
 
-      xit "compares a partially identical sequence with the same color" do
+      it "compares a partially identical sequence with the same color" do
         expect(subject.evaluate_guess(%i[green blue red red])).to eql({ color_and_spot: 1, color: 3 })
       end
 
-      xit "compares a completely incorrect sequence against it" do
+      it "compares a completely incorrect sequence against it" do
         expect(subject.evaluate_guess(%i[yellow yellow yellow yellow])).to eql({ color_and_spot: 0, color: 0 })
       end
     end
