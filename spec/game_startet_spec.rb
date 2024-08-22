@@ -27,13 +27,13 @@ RSpec.describe GameStarter do
     end
 
     xit "calls the start method of startable_double1 when given by input_manager" do
-      allow(@input_manager).to receive(:input).with(@startable_double1)
+      allow(@input_manager).to receive(:input).and_return(@startable_double1)
       expect(@startable_double1).to receive(:start)
       @game_starter.start_game
     end
 
     xit "calls the start method of startable_double2 when given by input_manager" do
-      allow(@input_manager).to receive(:input).with(@startable_double2)
+      allow(@input_manager).to receive(:input).and_return(@startable_double2)
       expect(@startable_double2).to receive(:start)
       @game_starter.start_game
     end
