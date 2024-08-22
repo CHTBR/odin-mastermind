@@ -13,23 +13,50 @@ class Board
   end
 
   def to_s
-    string = "
+    string = ""
+    append_top(string)
+    loop_rows(string)
+    append_bottom(string)
+    string
+  end
+
+  def append_top(string)
+    string << "
         _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
        |     | :: :: :: :: :: :: :: :: :: :: :: ::   |\n"
+  end
+
+  def loop_rows(string)
     4.times do |row|
-      string << "       |  "
-      string << (target.nil? ? "?" : "^".colorize(target[row]))
-      string << "  |"
-      12.times do |column|
-        string << "  "
-        string << "^".colorize(@guesses[column][row])
-      end
+      append_target(string)
+      loop_columns(string, row)
       string << "   |\n"
     end
+  end
+
+  def append_target(string)
+    string << "       |  "
+    string << (target.nil? ? "?" : "^".colorize(target[row]))
+    string << "  |"
+  end
+
+  def loop_columns(string, row)
+    12.times do |column|
+      append_guess_notch(string, column, row)
+    end
+  end
+
+  def append_guess_notch(string, column, row)
+    string << "  "
+    string << "^".colorize(@guesses[column][row])
+  end
+
+  def append_bottom(string)
     string << "       |_ _ _|_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _|
         \\ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ /
 
 "
-    string
   end
 end
+
+puts Board.new
