@@ -13,4 +13,10 @@ RSpec.describe GameStarter do
     game_starter = GameStarter.new({ input_manager: input_manager_double,
                                      mode_list: [startable_double1, startable_double2] })
   end
+
+  describe "#start_game" do
+    it "responds to #start_game" do
+      expect(game_starter).to respond_to(:start_game)
+    end
+  end
 end
