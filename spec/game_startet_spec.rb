@@ -19,21 +19,21 @@ RSpec.describe GameStarter do
       expect(@game_starter).to respond_to(:start_game)
     end
 
-    xit "calls the input method of input_manager with message and options arguments" do
+    it "calls the input method of input_manager with message and options arguments" do
       allow(@input_manager_double).to receive(:input).and_return(@startable_double1)
       expect(@input_manager_double).to receive(:input).with({ message: "Select game mode:",
                                                               options: [@startable_double1, @startable_double2] })
       @game_starter.start_game
     end
 
-    xit "calls the start method of startable_double1 when given by input_manager" do
-      allow(@input_manager).to receive(:input).and_return(@startable_double1)
+    it "calls the start method of startable_double1 when given by input_manager" do
+      allow(@input_manager_double).to receive(:input).and_return(@startable_double1)
       expect(@startable_double1).to receive(:start)
       @game_starter.start_game
     end
 
-    xit "calls the start method of startable_double2 when given by input_manager" do
-      allow(@input_manager).to receive(:input).and_return(@startable_double2)
+    it "calls the start method of startable_double2 when given by input_manager" do
+      allow(@input_manager_double).to receive(:input).and_return(@startable_double2)
       expect(@startable_double2).to receive(:start)
       @game_starter.start_game
     end
