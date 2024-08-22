@@ -58,5 +58,3 @@ class Board
 "
   end
 end
-
-puts Board.new
