@@ -24,7 +24,7 @@ RSpec.describe Board do
   end
 
   describe "#to_s" do
-    xit "returns an ASCII art board when turned into string" do
+    it "returns an ASCII art board when turned into string" do
       expect(subject.to_s).to eql(
         "
         _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
