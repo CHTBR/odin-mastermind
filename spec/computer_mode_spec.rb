@@ -25,5 +25,10 @@ RSpec.describe ComputerMode do
       expect(@guess_evaluator_double).to receive(:target=)
       @computer_mode.start
     end
+
+    it "gives sequence to the board" do
+      expect(@board_double).to receive(:target=)
+      @computer_mode.start
+    end
   end
 end
