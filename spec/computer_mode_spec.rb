@@ -59,7 +59,7 @@ RSpec.describe ComputerMode do
 
     context "when a computer wins in the 7th round of the game" do
       before do
-        allow(@computer_double).to receive(:input).and_return("board")
+        allow(@computer_double).to receive(:input).and_return("board2")
         allow(@guess_evaluator_double).to receive(:evaluate_guess).and_return({ color: 0, color_and_spot: 0 },
                                                                               { color: 0, color_and_spot: 0 }, { color: 0, color_andspot: 0 }, { color: 0, color_and_spot: 0 }, { color: 0, color_and_spot: 0 }, { color: 0, color_and_spot: 0 }, { color: 0, color_and_spot: 4 })
         allow(@board_double).to receive(:set_column)
@@ -71,11 +71,11 @@ RSpec.describe ComputerMode do
       end
       xit "sends a message to ask the guess_evaluator for a guess evaluation every round and no more" do
         @computer_mode.start
-        expect(@guess_evaluator_double).to have_received(:evaluate_guess).with("board").exactly(7).times
+        expect(@guess_evaluator_double).to have_received(:evaluate_guess).with("board2").exactly(7).times
       end
       xit "sends a message to update board every round" do
         @computer_mode.start
-        expect(@board_double).to have_received(:set_column).with("board").exactly(7).times
+        expect(@board_double).to have_received(:set_column).with("board2").exactly(7).times
       end
     end
   end
