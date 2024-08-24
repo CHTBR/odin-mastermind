@@ -40,7 +40,6 @@ RSpec.describe ComputerMode do
       before do
         allow(@computer_double).to receive(:input).and_return("board")
         allow(@guess_evaluator_double).to receive(:evaluate_guess).and_return({ color: 0, color_and_spot: 0 })
-        allow(@board_double).to receive(:set_column)
       end
 
       it "sends a message to ask the computer for a guess every round and no more" do
@@ -62,7 +61,6 @@ RSpec.describe ComputerMode do
         allow(@computer_double).to receive(:input).and_return("board2")
         allow(@guess_evaluator_double).to receive(:evaluate_guess).and_return({ color: 0, color_and_spot: 0 },
                                                                               { color: 0, color_and_spot: 0 }, { color: 0, color_andspot: 0 }, { color: 0, color_and_spot: 0 }, { color: 0, color_and_spot: 0 }, { color: 0, color_and_spot: 0 }, { color: 0, color_and_spot: 4 })
-        allow(@board_double).to receive(:set_column)
       end
 
       it "sends a message to ask the computer for a guess every round and no more" do
