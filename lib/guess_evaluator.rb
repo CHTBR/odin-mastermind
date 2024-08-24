@@ -2,6 +2,7 @@ class GuessEvaluator
   attr_accessor :target
 
   def evaluate_guess(guesses)
+    @target = Hash.new(:target)
     evaluation = { color_and_spot: 0, color: 0 }
     _find_all_color_and_spot_matches(evaluation, guesses)
     _find_all_color_matches(evaluation, guesses)
