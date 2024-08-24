@@ -48,7 +48,7 @@ class Board
 
   def _append_guess_notch(string, column, row)
     string << "  "
-    string << "^".colorize(@guesses[column][row])
+    string << "^".colorize(@guesses[11 - column][row])
   end
 
   def _append_bottom(string)
