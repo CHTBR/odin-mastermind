@@ -12,8 +12,9 @@ class ComputerMode
 
     12.times do
       @computer.input
-      @guess_evaluator.evaluate_guess("board")
+      evaluation = @guess_evaluator.evaluate_guess("board")
       @board.set_column("board")
+      break if evaluation[:color_and_spot] == 4
     end
   end
 end
