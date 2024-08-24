@@ -9,7 +9,7 @@ class Board
   end
 
   def set_column(args)
-    @guesses[args[:number] - 1] = args[:sequence]
+    @guesses[args[:number]] = args[:sequence]
   end
 
   def to_s
