@@ -12,6 +12,7 @@ RSpec.describe ComputerMode do
     allow(@board_double).to receive(:target=)
     @computer_double = double("Computer")
     allow(@computer_double).to receive(:guess)
+    allow(@computer_double).to receive(:input)
     @computer_mode = ComputerMode.new({ guess_evaluator: @guess_evaluator_double, board: @board_double,
                                         computer: @computer_double })
   end
@@ -40,7 +41,7 @@ RSpec.describe ComputerMode do
         allow(@board_double).to receive(:set_column)
       end
 
-      xit "sends a message to ask the computer for a guess every round and no more" do
+      it "sends a message to ask the computer for a guess every round and no more" do
         @computer_mode.start
         expect(@computer_double).to have_received(:input).exactly(12).times
       end
