@@ -69,7 +69,7 @@ RSpec.describe ComputerMode do
         @computer_mode.start
         expect(@computer_double).to have_received(:input).exactly(7).times
       end
-      xit "sends a message to ask the guess_evaluator for a guess evaluation every round and no more" do
+      it "sends a message to ask the guess_evaluator for a guess evaluation every round and no more" do
         @computer_mode.start
         expect(@guess_evaluator_double).to have_received(:evaluate_guess).with("board2").exactly(7).times
       end
