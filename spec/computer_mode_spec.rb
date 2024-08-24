@@ -21,7 +21,7 @@ RSpec.describe ComputerMode do
   end
 
   context "during pre-game configuration" do
-    xit "generates a target sequence and gives it to the guess_evaluator" do
+    it "generates a target sequence and gives it to the guess_evaluator" do
       expect(@guess_evaluator_double).to receive(:target=)
       @computer_mode.start
     end
