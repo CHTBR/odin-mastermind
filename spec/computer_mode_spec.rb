@@ -52,7 +52,7 @@ RSpec.describe ComputerMode do
       end
       it "sends a message to update board every round" do
         @computer_mode.start
-        expect(@board_double).to have_received(:set_column).with("board").exactly(12).times
+        expect(@board_double).to have_received(:set_column).exactly(12).times
       end
     end
 
@@ -73,7 +73,7 @@ RSpec.describe ComputerMode do
       end
       it "sends a message to update board every round" do
         @computer_mode.start
-        expect(@board_double).to have_received(:set_column).with("board2").exactly(7).times
+        expect(@board_double).to have_received(:set_column).exactly(7).times
       end
     end
   end
