@@ -17,10 +17,10 @@ class ComputerMode
   end
 
   def _start_game_loop
-    12.times do
+    12.times do |number|
       guess = @computer.input
       evaluation = @guess_evaluator.evaluate_guess(guess)
-      @board.set_column(guess)
+      @board.set_column({ number: number, sequence: guess })
       break if evaluation[:color_and_spot] == 4
     end
   end
