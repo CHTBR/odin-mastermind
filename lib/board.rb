@@ -28,13 +28,13 @@ class Board
 
   def _loop_rows(string)
     4.times do |row|
-      _append_target(string)
+      _append_target(string, row)
       _loop_columns(string, row)
       string << "   |\n"
     end
   end
 
-  def _append_target(string)
+  def _append_target(string, row)
     string << "       |  "
     string << (target.nil? ? "?" : "^".colorize(target[row]))
     string << "  |"
