@@ -13,6 +13,7 @@ class ComputerMode
     12.times do
       @computer.input
       @guess_evaluator.evaluate_guess("board")
+      @board.set_column("board")
     end
   end
 end
