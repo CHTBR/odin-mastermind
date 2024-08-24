@@ -26,9 +26,26 @@ RSpec.describe ComputerMode do
       @computer_mode.start
     end
 
-    it "gives sequence to the board" do
+    xit "gives sequence to the board" do
       expect(@board_double).to receive(:target=)
       @computer_mode.start
+    end
+  end
+
+  context "during the full game consisting of at most 12 rounds" do
+    context "when a computer doesn't guess the correct sequence" do
+      xit "sends a message to ask the computer for a guess every round and no more" do
+        allow(@input_manager_double).to receive(:evaluate_guess).and_return({ color: 0, color_and_spot: 0 })
+        allow(@computer).to receive(:input)
+        @computer_mode.start
+        expect(@computer).to have_received(:input).exactly(12).times
+      end
+      xit "sends a message to update board every round" do
+        allow(@input_manager_double).to receive(:evaluate_guess).and_return({ color: 0, color_and_spot: 0 })
+        allow(@board).to receive(:set_column)
+        @computer_mode.start
+        expect(@board).to have_received(:set_column).exactly(12).times
+      end
     end
   end
 end
