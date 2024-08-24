@@ -26,7 +26,7 @@ RSpec.describe ComputerMode do
       @computer_mode.start
     end
 
-    xit "gives sequence to the board" do
+    it "gives a target to the board" do
       expect(@board_double).to receive(:target=)
       @computer_mode.start
     end
