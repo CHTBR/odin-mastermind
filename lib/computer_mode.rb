@@ -9,6 +9,7 @@ class ComputerMode
     target = _generate_randomized_target_sequence
     @guess_evaluator.target = target
     @board.target = target
+    puts @board
     _start_game_loop
   end
 
@@ -21,7 +22,13 @@ class ComputerMode
       guess = @computer.input
       evaluation = @guess_evaluator.evaluate_guess(guess)
       @board.set_column({ number: number, sequence: guess })
-      break if evaluation[:color_and_spot] == 4
+      puts @board
+      puts "The computer guessed #{evaluation[:color_and_spot]} pins exactly and got #{evaluation[:color]} colors right"
+      if evaluation[:color_and_spot] == 4
+        puts "The computer guessed the sequence in #{number + 1} turns."
+        return
+      end
     end
+    puts "The computer didn't manage to guess the sequence."
   end
 end
