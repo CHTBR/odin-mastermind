@@ -17,6 +17,7 @@ RSpec.describe Computer do
 
     context "during a normal game" do
       xit "generates a new guess every time input is called" do
+        expect(@computer.input).to_not eql(@computer.input)
       end
 
       xit "can guess a random target after at most 24 guesses" do
