@@ -11,13 +11,17 @@ RSpec.describe Computer do
   end
 
   describe "#input" do
-    xit "responds to the input method" do
+    it "responds to the input method" do
       expect(@computer).to respond_to(:input)
     end
 
     context "during a normal game" do
-      xit "generates a new guess every time input is called" do
+      it "generates a new guess every time input is called" do
         expect(@computer.input).to_not eql(@computer.input)
+      end
+
+      xit "returns [:red :red :red :red] as its first guess" do
+        expect(@computer.input).to eql(%i[red red red red])
       end
 
       xit "can guess a random target after at most 24 guesses" do
