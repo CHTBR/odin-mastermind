@@ -12,6 +12,7 @@ RSpec.describe Computer do
 
   describe "#input" do
     xit "responds to the input method" do
+      expect(@computer).to respond_to(:input)
     end
 
     context "during a normal game" do
