@@ -27,6 +27,13 @@ RSpec.describe Computer do
         expect(@computer.input).to eql(%i[yellow yellow yellow yellow])
       end
 
+      xit "returns [:blue, :red, :red, :red] after getting evaluations 3, 3, 4]" do
+        allow(@guess_evaluator_double).to receive(:input).and_return({ color_and_spot: 3 }, { color_and_spot: 3 },
+                                                                     { color_and_spot: 4 })
+        3.times { @computer.input }
+        expect(@computer.input).to eql(%i[blue red red red])
+      end
+
       xit "returns [:red :red :red :red] as its first guess" do
         expect(@computer.input).to eql(%i[red red red red])
       end
