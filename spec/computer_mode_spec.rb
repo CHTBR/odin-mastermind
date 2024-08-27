@@ -3,9 +3,12 @@ require_relative "../lib/computer_mode"
 require_relative "startable_spec"
 require_relative "../lib/board"
 require_relative "../lib/guess_evaluator"
+require_relative "../lib/player"
 
 RSpec.describe ComputerMode do
   before do
+    @input_manager_double = instance_double("Player")
+    allow(@input_manager_double).to receive(:input).and_return("target")
     @guess_evaluator_double = instance_double("GuessEvaluator")
     allow(@guess_evaluator_double).to receive(:target=)
     allow(@guess_evaluator_double).to receive(:evaluate_guess).and_return({ color: 0, color_and_spot: 0 })
@@ -16,7 +19,7 @@ RSpec.describe ComputerMode do
     allow(@computer_double).to receive(:guess)
     allow(@computer_double).to receive(:input)
     @computer_mode = ComputerMode.new({ guess_evaluator: @guess_evaluator_double, board: @board_double,
-                                        computer: @computer_double })
+                                        computer: @computer_double, input_manager: @input_manager_double })
   end
 
   it_behaves_like "a startable" do
@@ -24,12 +27,17 @@ RSpec.describe ComputerMode do
   end
 
   context "during pre-game configuration" do
-    it "generates a target sequence and gives it to the guess_evaluator" do
+    it "asks the input_manager for a target" do
+      expect(@input_manager_double).to receive(:input).with({ message: "Choose a color:", options: %i[red green blue yellow] }).exactly(4).times
+      @computer_mode.start
+    end
+
+    it "gives the target to the guess_evaluator" do
       expect(@guess_evaluator_double).to receive(:target=)
       @computer_mode.start
     end
 
-    it "gives a target to the board" do
+    it "gives the target to the board" do
       expect(@board_double).to receive(:target=)
       @computer_mode.start
     end
