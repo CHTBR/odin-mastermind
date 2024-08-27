@@ -21,6 +21,8 @@ RSpec.describe Computer do
       end
 
       xit "can guess a random target after at most 24 guesses" do
+        23.times { @computer.input }
+        expect(@computer.input).to eql(@guess_evaluator_double.target)
       end
     end
   end
