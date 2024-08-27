@@ -4,9 +4,8 @@ require_relative "../lib/guess_evaluator"
 
 RSpec.describe Computer do
   before do
-    @guess_evaluator_double = instance_double("GuessEvaluator", target: Array.new(4).map do |_element|
-                                                                          %i[red green red yellow].shuffle.shuffle.sample
-                                                                        end)
+    @guess_evaluator_double = instance_double("GuessEvaluator")
+    allow(@guess_evaluator_double).to receive(:input).and_return(evaluate_guess: { color_and_spot: 4 })
     @computer = Computer.new({ guess_evaluator: @guess_evaluator_double })
   end
 
@@ -17,16 +16,12 @@ RSpec.describe Computer do
 
     context "during a normal game" do
       it "generates a new guess every time input is called" do
+        allow(@guess_evaluator_double).to receive(:input).and_return(evaluate_guess: { color_and_spot: 1 })
         expect(@computer.input).to_not eql(@computer.input)
       end
 
       xit "returns [:red :red :red :red] as its first guess" do
         expect(@computer.input).to eql(%i[red red red red])
-      end
-
-      xit "can guess a random target after at most 24 guesses" do
-        23.times { @computer.input }
-        expect(@computer.input).to eql(@guess_evaluator_double.target)
       end
     end
   end
