@@ -3,18 +3,16 @@ class ComputerMode
     @guess_evaluator = args[:guess_evaluator]
     @board = args[:board]
     @computer = args[:computer]
+    @input_manager = args[:input_manager]
   end
 
   def start
-    target = _generate_randomized_target_sequence
+    target = []
+    4.times { target << @input_manager.input({ message: "Choose a color:", options: %i[red green blue yellow] }) }
     @guess_evaluator.target = target
     @board.target = target
     puts @board
     _start_game_loop
-  end
-
-  def _generate_randomized_target_sequence
-    Array.new(4).map { |_element| %i[red green red yellow].shuffle.shuffle.sample }
   end
 
   def _start_game_loop
