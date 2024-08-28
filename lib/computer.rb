@@ -7,6 +7,10 @@ class Computer
 
   def input
     guess = _convert_raw_guess unless @previous_evaluation
+    unless guess
+      @raw_guess = @raw_guess.map { |element| element + 1 } if @previous_evaluation[:color_and_spot].zero?
+      guess = _convert_raw_guess
+    end
     @previous_evaluation = @guess_evaluator.evaluate_guess(guess)
     guess
   end
