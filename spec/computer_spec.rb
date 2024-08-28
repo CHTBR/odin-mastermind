@@ -15,7 +15,7 @@ RSpec.describe Computer do # rubocop:disable Metrics/BlockLength
     end
 
     context "during a normal game" do # rubocop:disable Metrics/BlockLength
-      xit "generates a new guess every time input is called" do
+      it "generates a new guess every time input is called" do
         allow(@guess_evaluator_double).to receive(:evaluate_guess).and_return({ color_and_spot: 1 })
         expect(@computer.input).to_not eql(@computer.input)
       end
