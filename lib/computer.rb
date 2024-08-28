@@ -1,10 +1,5 @@
 class Computer
   def initialize(args)
-    @counter = 0
-  end
-
-  def input
-    @counter += 1
-    @counter
+    @raw_guess = [0, 0, 0, 0]
   end
 end
