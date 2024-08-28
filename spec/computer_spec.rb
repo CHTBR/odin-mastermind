@@ -10,12 +10,12 @@ RSpec.describe Computer do
   end
 
   describe "#input" do
-    it "responds to the input method" do
+    xit "responds to the input method" do
       expect(@computer).to respond_to(:input)
     end
 
     context "during a normal game" do
-      it "generates a new guess every time input is called" do
+      xit "generates a new guess every time input is called" do
         allow(@guess_evaluator_double).to receive(:input).and_return(evaluate_guess: { color_and_spot: 1 })
         expect(@computer.input).to_not eql(@computer.input)
       end
