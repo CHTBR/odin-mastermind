@@ -29,7 +29,7 @@ RSpec.describe Computer do # rubocop:disable Metrics/BlockLength
         expect(@computer.input).to eql(%i[yellow yellow yellow yellow])
       end
 
-      xit "returns [:blue, :red, :red, :red] after getting evaluations 3, 3, 4]" do
+      it "returns [:blue, :red, :red, :red] after getting evaluations 3, 3, 4]" do
         allow(@guess_evaluator_double).to receive(:evaluate_guess).and_return({ color_and_spot: 3 },
                                                                               { color_and_spot: 3 },
                                                                               { color_and_spot: 4 })

@@ -2,16 +2,22 @@ class Computer
   def initialize(args)
     @guess_evaluator = args[:guess_evaluator]
     @raw_guess = [0, 0, 0, 0]
-    @previous_evaluation = nil
+    @current_evaluation = {}
+    @current_column = 0
   end
 
   def input
-    guess = _convert_raw_guess unless @previous_evaluation
-    unless guess
-      @raw_guess = @raw_guess.map { |element| element + 1 } if @previous_evaluation[:color_and_spot].zero?
+    guess = _convert_raw_guess unless @current_evaluation[:color_and_spot]
+    unless guess || @current_evaluation[:color_and_spot] != 0
+      @raw_guess = @raw_guess.map { |element| element + 1 }
       guess = _convert_raw_guess
     end
-    @previous_evaluation = @guess_evaluator.evaluate_guess(guess)
+    unless guess || @current_evaluation[:color_and_spot] == 4
+      @raw_guess[@current_column] += 1
+      guess = _convert_raw_guess
+    end
+    guess = _convert_raw_guess
+    @current_evaluation = @guess_evaluator.evaluate_guess(guess)
     guess
   end
 
