@@ -26,6 +26,12 @@ RSpec.describe ComputerMode do
     subject { @computer_mode }
   end
 
+  describe "#to_s" do
+    it "implements a custom #to_s method" do
+      expect(@computer_mode.to_s).to eql("Computer Mode")
+    end
+  end
+
   context "during pre-game configuration" do
     it "asks the input_manager for a target" do
       expect(@input_manager_double).to receive(:input).with({ message: "Choose a color:", options: %i[red green blue yellow] }).exactly(4).times
