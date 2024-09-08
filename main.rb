@@ -1,0 +1,6 @@
+require_relative "lib/game_starter"
+require_relative "lib/player"
+require_relative "lib/computer_mode"
+require_relative "lib/guess_evaluator"
+require_relative "lib/computer"
+require_relative "lib/board"
