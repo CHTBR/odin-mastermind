@@ -27,7 +27,7 @@ class Computer
         @current_column += 1
         @current_evaluation[:color_and_spot] += 1
       end
-      @raw_guess[@current_column] += 1
+      @raw_guess[@current_column] += 1 unless @current_evaluation[:color_and_spot] == 4
       guess = _convert_raw_guess
     end
     guess = _convert_raw_guess
