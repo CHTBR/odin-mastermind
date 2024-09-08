@@ -74,7 +74,7 @@ RSpec.describe Computer do # rubocop:disable Metrics/BlockLength
         expect(@computer.input).to eql(%i[yellow red red red])
       end
 
-      xit "returns [:red :red :red :red] as its first guess" do
+      it "returns [:red :red :red :red] as its first guess" do
         expect(@computer.input).to eql(%i[red red red red])
       end
     end
