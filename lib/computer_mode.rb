@@ -54,4 +54,8 @@ class ComputerMode
     puts "The computer guessed the sequence in #{round + 1} turns."
     true
   end
+
+  def to_s
+    "Computer Mode"
+  end
 end
