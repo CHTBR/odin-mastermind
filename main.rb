@@ -12,3 +12,5 @@ computer = Computer.new({ guess_evaluator: guess_evaluator })
 computer_mode = ComputerMode.new({ guess_evaluator: guess_evaluator, board: board, computer: computer,
                                    input_manager: input_manager })
 game_starter = GameStarter.new({ input_manager: input_manager, mode_list: [computer_mode] })
+
+game_starter.start_game
