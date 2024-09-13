@@ -19,7 +19,7 @@ class Computer
       end
       guess = _convert_raw_guess
     end
-    unless guess || @current_evaluation[:color_and_spot] != 0
+    unless guess || @current_evaluation[:color_and_spot] != 0 || @raw_guess.uniq.size != 1
       @raw_guess = @raw_guess.map { |element| element + 1 }
       guess = _convert_raw_guess
     end
