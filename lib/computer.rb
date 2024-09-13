@@ -9,7 +9,7 @@ class Computer
 
   def input
     guess = _convert_raw_guess if @current_evaluation[:color_and_spot] == -1
-    @current_column += 1 if @current_evaluation[:color_and_spot] > @previous_evaluation[:color_and_spot] && @previous_evaluation[:color_and_spot] != -1
+    @current_column += 1 if @current_evaluation[:color_and_spot] == (@previous_evaluation[:color_and_spot] + 1) && @previous_evaluation[:color_and_spot] != -1
     if @raw_guess[@current_column] == 2 && @current_evaluation[:color_and_spot] != 0
       @raw_guess[@current_column] += 1
       unless @current_column == 3
