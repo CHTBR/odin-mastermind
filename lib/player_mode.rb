@@ -9,6 +9,7 @@ class PlayerMode
     round = 0
     until round == 12
       guess = _player_guess
+      evaluation = @guess_evaluator.evaluate_guess(guess)
       round += 1
     end
   end
