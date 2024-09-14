@@ -2,6 +2,7 @@ class PlayerMode
   def initialize(args)
     @guess_evaluator = args[:guess_evaluator]
     @input_manager = args[:input_manager]
+    @board = args[:board]
   end
 
   def start
@@ -10,6 +11,7 @@ class PlayerMode
     until round == 12
       guess = _player_guess
       evaluation = @guess_evaluator.evaluate_guess(guess)
+      @board.set_column({ number: round, sequence: guess })
       round += 1
     end
   end
