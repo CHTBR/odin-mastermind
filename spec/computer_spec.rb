@@ -78,6 +78,20 @@ RSpec.describe Computer do # rubocop:disable Metrics/BlockLength
       it "returns [:red :red :red :red] as its first guess" do
         expect(@computer.input).to eql(%i[red red red red])
       end
+
+      context "by not changing the column right after incrementing all the columns" do
+        it "returns [:blue, :green, :yellow, :blue] after getting evaluations 0, 1, 2, 1, 2, 3, 4]" do
+          allow(@guess_evaluator_double).to receive(:evaluate_guess).and_return({ color_and_spot: 0 },
+                                                                                { color_and_spot: 1 },
+                                                                                { color_and_spot: 2 },
+                                                                                { color_and_spot: 1 },
+                                                                                { color_and_spot: 2 },
+                                                                                { color_and_spot: 3 },
+                                                                                { color_and_spot: 4 })
+          7.times { @computer.input }
+          expect(@computer.input).to eql(%i[blue green yellow blue])
+        end
+      end
     end
   end
 end
