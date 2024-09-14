@@ -16,4 +16,10 @@ RSpec.describe PlayerMode do
   it_behaves_like "a startable" do
     subject { @player_mode }
   end
+
+  describe "#to_s" do
+    it "returns Player Mode" do
+      expect(@player_mode.to_s).to eql("Player Mode")
+    end
+  end
 end
