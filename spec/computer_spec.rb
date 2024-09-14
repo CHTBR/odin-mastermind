@@ -64,14 +64,14 @@ RSpec.describe Computer do # rubocop:disable Metrics/BlockLength
       end
 
       context "by implementing correcting when the last guess was incorrect and switching to the next column and evaluating it right after" do
-        it "returns [:yellow, :red, :red, :red] after getting evaluations 3, 3, 3, 3, 4]" do
+        it "returns [:red, :red, :red, :green] after getting evaluations 3, 2, 2, 2, 4]" do
           allow(@guess_evaluator_double).to receive(:evaluate_guess).and_return({ color_and_spot: 3 },
-                                                                                { color_and_spot: 3 },
-                                                                                { color_and_spot: 3 },
-                                                                                { color_and_spot: 3 },
+                                                                                { color_and_spot: 2 },
+                                                                                { color_and_spot: 2 },
+                                                                                { color_and_spot: 2 },
                                                                                 { color_and_spot: 4 })
           4.times { @computer.input }
-          expect(@computer.input).to eql(%i[yellow red red red])
+          expect(@computer.input).to eql(%i[red red red green])
         end
       end
 
