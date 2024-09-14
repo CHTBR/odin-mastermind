@@ -22,4 +22,11 @@ RSpec.describe PlayerMode do
       expect(@player_mode.to_s).to eql("Player Mode")
     end
   end
+
+  context "during pre-game configuration" do
+    it "generates a random target and gives it to the guess_evaluator" do
+      expect(@guess_evaluator_double).to receive(:target=)
+      @player_mode.start
+    end
+  end
 end
