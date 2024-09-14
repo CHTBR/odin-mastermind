@@ -10,8 +10,8 @@ class Computer
   def input
     # on first pass
     guess = _convert_raw_guess if _current_evaluation == -1
-    # if we got the option right in this column and this is not one of the first two guesses
-    @current_column += 1 if _current_evaluation == (_previous_evaluation + 1) && _previous_evaluation != -1
+    # if we got the option right in this column and this is not one of the first two guesses and we didn't increment all columns right before
+    @current_column += 1 if _current_evaluation > _previous_evaluation && _previous_evaluation != -1 && @raw_guess.uniq.size != 1
     # unless there's already a guess or or our current evaluation isn't 0 or all the columns don't have the same option
     unless guess || _current_evaluation != 0 || @raw_guess.uniq.size != 1
       _increment_all_columns
