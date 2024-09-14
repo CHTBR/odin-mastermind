@@ -1,5 +1,5 @@
 require "rspec"
-require_realtive "startable_spec"
+require_relative "startable_spec"
 require_relative "../lib/player_mode"
 require_relative "../lib/player"
 require_relative "../lib/board"
