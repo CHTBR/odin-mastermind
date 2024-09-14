@@ -29,4 +29,26 @@ RSpec.describe PlayerMode do
       @player_mode.start
     end
   end
+
+  context "during a full game consisting of at most 12 rounds" do
+    context "when the player doesn't guess the correct sequence" do
+      before do
+        allow(@guess_evaluator_double).to receive(:evaluate_guess).and_return({ color: 0, color_and_spot: 0 })
+        allow(@player_double).to receive(:input).and_return("board")
+      end
+
+      it "sends a message to ask the player for a guess every round and no more" do
+        @player_mode.start
+        expect(@player_double).to have_received(:input).exactly(12).times
+      end
+      it "sends a message to ask the guess_evaluator for a guess evaluation every round and no more" do
+        @player_mode.start
+        expect(@guess_evaluator_double).to have_received(:evaluate_guess).with("board").exactly(12).times
+      end
+      it "sends a message to update board every round" do
+        @player_mode.start
+        expect(@board_double).to have_received(:set_column).exactly(12).times
+      end
+    end
+  end
 end
