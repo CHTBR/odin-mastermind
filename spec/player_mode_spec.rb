@@ -8,8 +8,13 @@ require_relative "../lib/guess_evaluator"
 RSpec.describe PlayerMode do
   before do
     @player_double = instance_double("Player")
+    allow(@player_double).to receive(:input).and_return("target")
     @board_double = instance_double("Board")
+    allow(@board_double).to receive(:target=)
+    allow(@board_double).to receive(:set_column)
     @guess_evaluator_double = instance_double("GuessEvaluator")
+    allow(@guess_evaluator_double).to receive(:target=)
+    allow(@guess_evaluator_double).to receive(:evaluate_guess).and_return({ color: 0, color_and_spot: 0 })
     @player_mode = PlayerMode.new({ input_manager: @player_double, board: @board_double,
                                     guess_evaluator: @guess_evaluator_double })
   end
