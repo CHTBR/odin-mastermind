@@ -48,9 +48,9 @@ RSpec.describe PlayerMode do
         expect(@player_double).to have_received(:input).exactly(4 * 12).times # 4 times the number of rounds - one for every color
       end
 
-      xit "sends a message to ask the guess_evaluator for a guess evaluation every round and no more" do
+      it "sends a message to ask the guess_evaluator for a guess evaluation every round and no more" do
         @player_mode.start
-        expect(@guess_evaluator_double).to have_received(:evaluate_guess).with("board").exactly(12).times
+        expect(@guess_evaluator_double).to have_received(:evaluate_guess).with(%w[board board board board]).exactly(12).times
       end
 
       xit "sends a message to update board every round" do
@@ -78,7 +78,7 @@ RSpec.describe PlayerMode do
 
       xit "sends a message to ask the guess_evaluator for a guess evaluation every round and no more" do
         @player_mode.start
-        expect(@guess_evaluator_double).to have_received(:evaluate_guess).with("board2").exactly(7).times
+        expect(@guess_evaluator_double).to have_received(:evaluate_guess).with(%w[board2 board2 board2 board2]).exactly(7).times
       end
 
       xit "sends a message to update board every round" do
