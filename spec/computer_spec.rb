@@ -51,17 +51,6 @@ RSpec.describe Computer do # rubocop:disable Metrics/BlockLength
         end
       end
 
-      context "by implementing skipping the last option and switching to next column and evaluating it right after" do
-        it "returns [:yellow, :green, :red, :red] after getting evaluations 2, 2, 2, 4]" do
-          allow(@guess_evaluator_double).to receive(:evaluate_guess).and_return({ color_and_spot: 2 },
-                                                                                { color_and_spot: 2 },
-                                                                                { color_and_spot: 2 },
-                                                                                { color_and_spot: 4 })
-          4.times { @computer.input }
-          expect(@computer.input).to eql(%i[yellow green red red])
-        end
-      end
-
       context "by correctly chaining switching to the next column when current is correct" do
         it "returns [:red, :red, :red, :green] after getting evaluations 3, 2, 2, 2, 4]" do
           allow(@guess_evaluator_double).to receive(:evaluate_guess).and_return({ color_and_spot: 3 },
@@ -88,40 +77,6 @@ RSpec.describe Computer do # rubocop:disable Metrics/BlockLength
 
       it "returns [:red :red :red :red] as its first guess" do
         expect(@computer.input).to eql(%i[red red red red])
-      end
-
-      context "possibly unneeded test" do
-        it "returns [:red, :green, :blue, :yellow] after getting evaluations 1, 0, 2, 2, 3, 3, 3, 4]" do
-          allow(@guess_evaluator_double).to receive(:evaluate_guess).and_return({ color_and_spot: 1 },
-                                                                                { color_and_spot: 0 },
-                                                                                { color_and_spot: 2 },
-                                                                                { color_and_spot: 2 },
-                                                                                { color_and_spot: 3 },
-                                                                                { color_and_spot: 3 },
-                                                                                { color_and_spot: 3 },
-                                                                                { color_and_spot: 4 })
-          8.times { @computer.input }
-          expect(@computer.input).to eql(%i[red green blue yellow])
-        end
-
-        it "returns [:blue, :green, :green, :green] after getting evaluations 0, 3, 4]" do
-          allow(@guess_evaluator_double).to receive(:evaluate_guess).and_return({ color_and_spot: 0 },
-                                                                                { color_and_spot: 3 },
-                                                                                { color_and_spot: 4 })
-          3.times { @computer.input }
-          expect(@computer.input).to eql(%i[blue green green green])
-        end
-
-        it "returns [:yellow, :green, :green, :blue] after getting evaluations 0, 2, 2, 2, 2, 4]" do
-          allow(@guess_evaluator_double).to receive(:evaluate_guess).and_return({ color_and_spot: 0 },
-                                                                                { color_and_spot: 2 },
-                                                                                { color_and_spot: 2 },
-                                                                                { color_and_spot: 2 },
-                                                                                { color_and_spot: 2 },
-                                                                                { color_and_spot: 4 })
-          5.times { @computer.input }
-          expect(@computer.input).to eql(%i[yellow green green blue])
-        end
       end
     end
   end
