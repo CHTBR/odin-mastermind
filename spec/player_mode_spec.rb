@@ -12,4 +12,8 @@ RSpec.describe PlayerMode do
     @guess_evaluator_double = instance_double("GuessEvaluator")
     @player_mode = PlayerMode.new({ input_manager: @player_double, board: @board_double, guess_evaluator: @guess_evaluator })
   end
+
+  it_behaves_like "a startable" do
+    subject { @player_mode }
+  end
 end
